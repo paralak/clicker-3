@@ -1,0 +1,125 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Clicker 3</title>
+  <link rel="stylesheet" href="src/main.css">
+  <script src="blocks/preload.js"></script>
+  <script src="blocks/itemStat.js"></script>
+  <script src="blocks/item.js"></script>
+  <script src="blocks/inventory.js"></script>
+  <script src="blocks/game.js"></script>
+  <script src="blocks/stats.js"></script>
+  <script src="blocks/enemy.js"></script>
+  <script src="blocks/upgrades.js"></script>
+  <script src="blocks/statsObj.js"></script>
+  <script src="blocks/main.js"></script>
+</head>
+<body>
+  <p-game class="game">
+    <div class="wrapper">
+      <p-enemy>
+        <div class="enemy">
+          <div class="hpbar">
+            <span class="hp">50</span>
+            <span class="maxhp">50</span>
+          </div>
+        </div>
+      </p-enemy>
+      <p-stats>
+        <ul>
+          <li class="gold">0</li>
+          <li class="orb">0</li>
+          <li class="rpoints">0</li>
+          <li class="basedamage">1</li>
+        </ul>
+      </p-stats>
+      <p-upgrades>
+        <button class="damage">
+          Базовый урон<br>
+          <span class="lvl">0</span><br>
+          <span class="cost">10</span>
+        </button>
+        <button class="item">
+          Предмет<br>
+          <span class="costg">1000</span><br>
+          <span class="costo">10</span>
+        </button>
+      </p-upgrades>
+      <p-inventory>
+        <div id="slot0" class="unselected">
+          <span class="name"></span> <span class="lvl"></span><br>
+          <span class="stat1 notfixed"></span><br>
+          <span class="stat2 notfixed"></span><br>
+          <span class="stat3 notfixed"></span><br>
+          <button class="select">Выб. </button>
+          <button class="upgrade">Ул. <span class="cost">0</span>r</button>
+          <button class="reforge">Пер. <span class="cost">0</span>оп</button>
+        </div>
+        <div id="slot1" class="unselected">
+          <span class="name"></span> <span class="lvl"></span><br>
+          <span class="stat1 notfixed"></span><br>
+          <span class="stat2 notfixed"></span><br>
+          <span class="stat3 notfixed"></span><br>
+          <button class="select">Выб. </button>
+          <button class="upgrade">Ул. <span class="cost">0</span>r</button>
+          <button class="reforge">Пер. <span class="cost">0</span>оп</button>
+        </div>
+        <div id="slot2" class="unselected">
+          <span class="name"></span> <span class="lvl"></span><br>
+          <span class="stat1 notfixed"></span><br>
+          <span class="stat2 notfixed"></span><br>
+          <span class="stat3 notfixed"></span><br>
+          <button class="select">Выб. </button>
+          <button class="upgrade">Ул. <span class="cost">0</span>r</button>
+          <button class="reforge">Пер. <span class="cost">0</span>оп</button>
+        </div>
+        <div id="slot3" class="unselected">
+          <span class="name"></span> <span class="lvl"></span><br>
+          <span class="stat1 notfixed"></span><br>
+          <span class="stat2 notfixed"></span><br>
+          <span class="stat3 notfixed"></span><br>
+          <button class="select">Выб. </button>
+          <button class="upgrade">Ул. <span class="cost">0</span>r</button>
+          <button class="reforge">Пер. <span class="cost">0</span>оп</button>
+        </div>
+        <div id="slot4" class="unselected">
+          <span class="name"></span> <span class="lvl"></span><br>
+          <span class="stat1 notfixed"></span><br>
+          <span class="stat2 notfixed"></span><br>
+          <span class="stat3 notfixed"></span><br>
+          <button class="select">Выб. </button>
+          <button class="upgrade">Ул. <span class="cost">0</span>r</button>
+          <button class="reforge">Пер. <span class="cost">0</span>оп</button>
+        </div>
+        <div id="slot5" class="unselected">
+          <span class="name"></span> <span class="lvl"></span><br>
+          <span class="stat1 notfixed"></span><br>
+          <span class="stat2 notfixed"></span><br>
+          <span class="stat3 notfixed"></span><br>
+          <button class="select">Выб. </button>
+          <button class="upgrade">Ул. <span class="cost">0</span>r</button>
+          <button class="reforge">Пер. <span class="cost">0</span>оп</button>
+        </div>
+        <div id="slot6" class="unselected">
+          <span class="name"></span> <span class="lvl"></span><br>
+          <span class="stat1 notfixed"></span><br>
+          <span class="stat2 notfixed"></span><br>
+          <span class="stat3 notfixed"></span><br>
+          <button class="select">Выб. </button>
+          <button class="upgrade">Ул. <span class="cost">0</span>r</button>
+          <button class="reforge">Пер. <span class="cost">0</span>оп</button>
+        </div>
+        <div id="slot7" class="unselected">
+          <span class="name"></span> <span class="lvl"></span><br>
+          <span class="stat1 notfixed"></span><br>
+          <span class="stat2 notfixed"></span><br>
+          <span class="stat3 notfixed"></span><br>
+          <button class="select">Выб. </button>
+          <button class="upgrade">Ул. <span class="cost">0</span>r</button>
+          <button class="reforge">Пер. <span class="cost">0</span>оп</button>
+        </div>
+      </p-inventory>
+    </div>
+  </p-game>
+</body>
+</html>

@@ -1,0 +1,154 @@
+* {
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+  font-family: system-ui;
+  user-select: none;
+}
+body {
+  background: #eee;
+  width: 100%;
+  height: 100%;
+}
+.wrapper {
+  width: 800px;
+  margin: auto;
+  margin-top: 30px;
+  padding: 20px;
+  border: #555 solid 1px;
+  border-radius: 20px;
+  position: relative;
+  min-height: 529px;
+}
+p-enemy .enemy {
+  background: #555;
+  height: 250px;
+  width: 300px;
+  border-radius: 10px;
+}
+p-enemy .hpbar {
+  text-align: center;
+  color: aliceblue;
+}
+p-enemy .hp::after {
+  content: ' / ';
+}
+p-stats {
+  display: block;
+  border: #555 solid 1px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  width: 300px;
+}
+p-stats li {
+  list-style: none;
+}
+p-stats .gold::before {
+  content: "Золото: ";
+}
+p-stats .gold::after {
+  content: "g";
+}
+p-stats .orb::before {
+  content: "Сферы: ";
+}
+p-stats .orb::after {
+  content: "r";
+}
+p-stats .rpoints::before {
+  content: "Очки перековки: ";
+}
+p-stats .rpoints::after {
+  content: "оп";
+}
+p-stats .basedamage::before {
+  content: "Базовый урон: ";
+}
+p-upgrades {
+  display: block;
+  margin-top: 10px;
+  border: #555 solid 1px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 300px;
+}
+p-upgrades button {
+  border: #555 solid 1px;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  text-align: left;
+}
+p-upgrades button:not(:last-child) {
+  margin-bottom: 10px
+}
+p-upgrades button:hover {
+  background: #ddd;
+}
+p-upgrades .damage .cost::before {
+  content: "Стоимость: "
+}
+p-upgrades .damage .cost::after {
+  content: "g"
+}
+p-upgrades .damage .lvl::before {
+  content: "Уровень: "
+}
+p-upgrades .item .costg::before {
+  content: "Стоимость: "
+}
+p-upgrades .item .costg::after {
+  content: "g"
+}
+p-upgrades .item .costo::before {
+  content: "Сферы: "
+}
+p-upgrades .item .costo::after {
+  content: "r"
+}
+
+p-inventory {
+  display: block;
+  font-size: 70%;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border: #555 solid 1px;
+  border-radius: 10px;
+  width: 440px;
+  height: 428px;
+  padding: 10px;
+}
+p-inventory div {
+  display: none;
+}
+p-inventory .display {
+  display: inline-block;
+  width: 48.9%;
+  border: #555 solid 1px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+  height: 94px;
+  vertical-align: top;
+}
+p-inventory .display:nth-child(odd) {
+  margin-right: 6px;
+}
+p-inventory .common {
+  color: #737373;
+}
+p-inventory .rare {
+  color: #254cff;
+}
+p-inventory .epic {
+  color: #ff19f3;
+}
+p-inventory button {
+  border: #555 solid 1px;
+  border-radius: 2px;
+  padding: 0px 3px 2px 2px;
+  margin-top: 3px;
+  font-size: 90%;
+}
