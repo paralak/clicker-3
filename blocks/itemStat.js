@@ -6,10 +6,12 @@ class ItemStat {
   #displayval = (lvl)=>{return ""}
   #rarity = "common"
   #lvl = 1
+  #prefix = 1
 
   constructor (args) {
     this.#name = args.name;
-    this.#startVal = args.startVal*(0.8+Math.random()*0.4);
+    this.#prefix = 0.4+Math.random()**2;
+    this.#startVal = args.startVal;
     this.#val = args.val;
     this.#displayval = args.displayval;
     this.#rarity = args.rarity;
@@ -38,8 +40,15 @@ class ItemStat {
     return this.#lvl = v;
   }
 
+  get prefix() {
+    return this.#prefix;
+  }
+  set prefix(v) {
+    return this.#prefix = v;
+  }
+
   get val() {
-    return this.#val(this);
+    return this.#val(this)*this.prefix;
   }
 
   get displayval() {
@@ -56,7 +65,7 @@ class ItemStat {
   }
 
   get text() {
-    return this.nameRu + ": " + this.displayval;
+    return this.nameRu + ": " + this.displayval + " ( " + Math.round(this.prefix*1000)/10 + "% )";
   }
 }
 

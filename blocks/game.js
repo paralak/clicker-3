@@ -21,8 +21,8 @@ class Game extends HTMLElement {
       }
       dmg += mainStats.flatdamage;
       if (mainStats.poison >= 0.001) {
-        let gagaga1 = mainStats.enemyid;
-        let gagaga2 = mainStats.baseDamage;
+        let gagaga1 = new Number(mainStats.enemyid);
+        let gagaga2 = new Number(mainStats.baseDamage);
         for (let i=0; i<2; i++) setTimeout(()=>{
           $('p-game').attack({
             type:'poison',
@@ -34,16 +34,22 @@ class Game extends HTMLElement {
       }
       mainStats.gold += dmg*0.1;
       console.log('[gold] ' + dmg*0.1);
+      console.log('[dmg] ' + dmg);
+      console.groupEnd();
+      mainStats.hp -= dmg;
     }
     if (args.type == 'poison' && args.enemyId == mainStats.enemyid) {
       dmg = args.baseDmg*mainStats.poison;
+      console.log('[dmg] ' + dmg);
+      console.groupEnd();
+      mainStats.hp -= dmg;
     }
     if (args.type == 'radians') {
       dmg *= mainStats.radians;
-    }
-    console.log('[dmg] ' + dmg);
-    console.groupEnd();
-    mainStats.hp -= dmg;
+      console.log('[dmg] ' + dmg);
+      console.groupEnd();
+      mainStats.hp -= dmg;
+  }
     
   }
 }
