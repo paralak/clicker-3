@@ -18,16 +18,23 @@ class Game extends HTMLElement {
       }
       dmg += mainStats.flatdamage;
       if (mainStats.poison >= 0.001) {
+        let gagaga1 = mainStats.enemyid;
+        let gagaga2 = mainStats.baseDamage;
         for (let i=0; i<2; i++) setTimeout(()=>{
           $('p-game').attack({
             type:'poison',
             enemy:args.enemy,
+            enemyId:gagaga1,
+            baseDmg:gagaga2,
           });
         }, 3000*i + 3000);
       }
     }
-    if (args.type == 'poison') {
-      dmg *= mainStats.poison;
+    if (args.type == 'poison' && args.enemyId == mainStats.enemyid) {
+      console.log(mainStats.enemyid);
+      console.log(args.enemyId);
+      
+      dmg = args.baseDmg*mainStats.poison;
     }
     if (args.type == 'radians') {
       dmg *= mainStats.radians;

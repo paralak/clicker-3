@@ -74,14 +74,14 @@ class Item {
   }
 
   get upgradeCost() {
-    return 7 + this.#lvl*3;
+    return 11 + this.#lvl*4;
   }
 
   get reforgeCost() {
     let r = 3;
-    if (this.stat1fixed) r*=5;
-    if (this.stat2fixed) r*=5;
-    if (this.stat3fixed) r*=5;
+    if (this.stat1fixed) r*=8;
+    if (this.stat2fixed) r*=8;
+    if (this.stat3fixed) r*=8;
     if (r>100) {
       r = 0;
     }
