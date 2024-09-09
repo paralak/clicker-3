@@ -3,6 +3,8 @@ class Game extends HTMLElement {
 
   }
   attack(args) {
+    console.group('[damage]');
+    console.log('[type] ' + args.type);
     let dmg = mainStats.baseDamage;
     if (args.type == 'main') {
       if (Math.random() < mainStats.critChance) {
@@ -12,9 +14,10 @@ class Game extends HTMLElement {
           mainStats.critAspectAdder -= mainStats.critaspect;
         }, 3000);
       }
-      if (mainStats.obj.ist.preparedFlag) {
+      if (mainStats.obj.ist.preparedFlag && mainStats.prepared > 1) {
         dmg += mainStats.baseDamage * mainStats.prepared;
         mainStats.obj.ist.preparedFlag = false;
+        console.log('[prepared damage] ' + mainStats.baseDamage * mainStats.prepared);
       }
       dmg += mainStats.flatdamage;
       if (mainStats.poison >= 0.001) {
@@ -30,6 +33,7 @@ class Game extends HTMLElement {
         }, 3000*i + 3000);
       }
       mainStats.gold += dmg*0.1;
+      console.log('[gold] ' + dmg*0.1);
     }
     if (args.type == 'poison' && args.enemyId == mainStats.enemyid) {
       dmg = args.baseDmg*mainStats.poison;
@@ -37,8 +41,10 @@ class Game extends HTMLElement {
     if (args.type == 'radians') {
       dmg *= mainStats.radians;
     }
-
+    console.log('[dmg] ' + dmg);
+    console.groupEnd();
     mainStats.hp -= dmg;
+    
   }
 }
 

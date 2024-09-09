@@ -6,6 +6,10 @@ class StatsObj {
       this.obj = obj;
     } else {
       this.obj = {
+        stats:{
+          dps: 0,
+          lastDeathTime: Date.now(),
+        },
         curs:{
           gold:0,
           orb:0,
@@ -245,6 +249,26 @@ class StatsObj {
   }
 
   /**
+   * @param {Date} d
+   */
+  set lastDeathTime(d) {
+    return this.obj.stats.lastDeathTime = d;
+  }
+  get lastDeathTime() {
+    return this.obj.stats.lastDeathTime;
+  }
+
+  /**
+   * @param {Number} v
+   */
+  set dps(v) {
+    return this.obj.stats.dps = v;
+  }
+  get dps() {
+    return this.obj.stats.dps;
+  }
+
+  /**
    * @param {StatsObj} v
    */
   set link(v) {
@@ -289,6 +313,8 @@ class StatsObj {
    * @param {Number} v
    */
   set hp(v) {
+    if (v<this.obj.enemy.hp) 
+      this.dps += this.obj.enemy.hp - v;
     this.obj.enemy.hp = v;
     $('p-enemy .hp').innerHTML = S(v);
     if (v<=0) {

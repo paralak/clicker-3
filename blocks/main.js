@@ -8,9 +8,14 @@ setInterval(()=>{
 
 window.addEventListener('load', ()=>{
   setInterval(()=>{
-    $('p-game').attack({
-      type: 'radians',
-      enemy: $('p-enemy'),
-    });
-  }, 3000)
+    if (mainStats.radians > 0.01)
+      $('p-game').attack({
+        type: 'radians',
+        enemy: $('p-enemy'),
+      });
+  }, 3000);
+  setInterval(()=>{
+    console.log('[dps] ' + mainStats.dps);
+    mainStats.dps = 0;
+  }, 1000);
 });
