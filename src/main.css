@@ -145,6 +145,11 @@ p-inventory .rare {
 p-inventory .epic {
   color: #ff19f3;
 }
+p-inventory .fixed::after {
+  content: "🔒";
+  filter: grayscale(1);
+  font-size: 90%;
+}
 p-inventory button {
   border: #555 solid 1px;
   border-radius: 2px;

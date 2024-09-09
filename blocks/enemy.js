@@ -11,7 +11,7 @@ class Enemy extends HTMLElement {
   }
 
   death() {
-    mainStats.gold += mainStats.maxhp * 0.25;
+    mainStats.gold += mainStats.maxhp * (0.25 + mainStats.extrareward) + mainStats.flatreward;
     mainStats.gold += mainStats.enemyid * mainStats.basereward;
     mainStats.orb += 1;
     mainStats.rpoints += 1;

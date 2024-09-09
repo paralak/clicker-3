@@ -29,6 +29,9 @@ class StatsObj {
           critrate:0,
           critaspect:0,
           critAspectAdder:0,
+          flatreward:0,
+          extrareward:0,
+          poison:0,
         }
       }
     }
@@ -175,6 +178,45 @@ class StatsObj {
   /**
    * @param {Number} v
    */
+  set flatreward(v) {
+    if (this.#link) {
+      this.#link.flatreward += v - this.flatreward;
+    }
+    return this.obj.ist.flatreward = v;
+  }
+  get flatreward() {
+    return this.obj.ist.flatreward;
+  }
+
+  /**
+   * @param {Number} v
+   */
+  set extrareward(v) {
+    if (this.#link) {
+      this.#link.extrareward += v - this.extrareward;
+    }
+    return this.obj.ist.extrareward = v;
+  }
+  get extrareward() {
+    return this.obj.ist.extrareward;
+  }
+
+  /**
+   * @param {Number} v
+   */
+  set poison(v) {
+    if (this.#link) {
+      this.#link.poison += v - this.poison;
+    }
+    return this.obj.ist.poison = v;
+  }
+  get poison() {
+    return this.obj.ist.poison;
+  }
+
+  /**
+   * @param {Number} v
+   */
   set gold(v) {
     return this.obj.curs.gold = v;
   }
@@ -218,6 +260,9 @@ class StatsObj {
       v.basereward += this.obj.ist.basereward;
       v.critrate += this.obj.ist.critrate;
       v.critaspect += this.obj.ist.critaspect;
+      v.flatreward += this.obj.ist.flatreward;
+      v.extrareward += this.obj.ist.extrareward;
+      v.poison += this.obj.ist.poison;
     }
     return this.#link = v;
   }
@@ -234,6 +279,9 @@ class StatsObj {
       this.#link.basereward -= this.obj.ist.basereward;
       this.#link.critrate -= this.obj.ist.critrate;
       this.#link.critaspect -= this.obj.ist.critaspect;
+      this.#link.flatreward -= this.obj.ist.flatreward;
+      this.#link.extrareward -= this.obj.ist.extrareward;
+      this.#link.poison -= this.obj.ist.poison;
     }
   }
 
