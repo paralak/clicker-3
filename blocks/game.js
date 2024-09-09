@@ -29,18 +29,15 @@ class Game extends HTMLElement {
           });
         }, 3000*i + 3000);
       }
+      mainStats.gold += dmg*0.1;
     }
     if (args.type == 'poison' && args.enemyId == mainStats.enemyid) {
-      console.log(mainStats.enemyid);
-      console.log(args.enemyId);
-      
       dmg = args.baseDmg*mainStats.poison;
     }
     if (args.type == 'radians') {
       dmg *= mainStats.radians;
     }
 
-    mainStats.gold += dmg;
     mainStats.hp -= dmg;
   }
 }
