@@ -36,11 +36,11 @@ class Upgrades extends HTMLElement {
   }
 
   get itemOrbCost() {
-    return 10;
+    return 10 + 10*$('p-inventory').items.length**2;
   }
 
   get itemGoldCost() {
-    return 10**$('p-inventory').items.length*1000;
+    return 12**$('p-inventory').items.length*1000;
   }
 }
 
