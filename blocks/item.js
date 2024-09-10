@@ -79,10 +79,10 @@ class Item {
 
   get reforgeCost() {
     let r = 3;
-    if (this.stat1fixed) r*=8;
-    if (this.stat2fixed) r*=8;
-    if (this.stat3fixed) r*=8;
-    if (r>100) {
+    if (this.stat1fixed) r*=7;
+    if (this.stat2fixed) r*=7;
+    if (this.stat3fixed) r*=7;
+    if (r>3*7*7) {
       r = 0;
     }
     return r;

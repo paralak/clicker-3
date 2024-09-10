@@ -3,6 +3,7 @@ class Upgrades extends HTMLElement {
     window.addEventListener('load', ()=>{      
       this.querySelector('.damage').addEventListener('click', ()=>{this.tryDamageLvlUp()});
       this.querySelector('.item').addEventListener('click', ()=>{this.tryBuyItem()});
+      this.querySelector('.prestige').addEventListener('click', ()=>{this.tryPrestige()});
     })
   }
 
@@ -31,6 +32,19 @@ class Upgrades extends HTMLElement {
     }
   }
 
+  tryPrestige() {
+    if (this.prestigeCost <= mainStats.gold) {
+      mainStats.gold = 0;
+      upgradesStats.lvldamage = 0;
+      mainStats.prestige += 1;
+      this.querySelector('.damage .lvl').innerHTML = mainStats.lvldamage;
+      this.querySelector('.damage .cost').innerHTML = this.damageCost;
+      $('p-enemy').prestige();
+      this.querySelector('.prestige .lvl').innerHTML = mainStats.prestige;
+      this.querySelector('.prestige .cost').innerHTML = this.prestigeCost;
+    }
+  }
+
   get damageCost() {
     return Math.floor(upgradesStats.lvldamage**1.9 * 6) + 10;
   }
@@ -41,6 +55,10 @@ class Upgrades extends HTMLElement {
 
   get itemGoldCost() {
     return 12**$('p-inventory').items.length*1000;
+  }
+
+  get prestigeCost() {
+    return 1000000*1.8**mainStats.prestige;
   }
 }
 

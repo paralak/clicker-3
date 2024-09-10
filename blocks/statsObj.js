@@ -17,6 +17,7 @@ class StatsObj {
         },
         lvls:{
           damage:0,
+          prestige:0,
         },
         enemy:{
           id:0,
@@ -86,6 +87,16 @@ class StatsObj {
   }
   get lvldamage() {
     return this.obj.lvls.damage;
+  }
+
+  /**
+   * @param {Number} v
+   */
+  set prestige(v) {
+    return this.obj.lvls.prestige = v;
+  }
+  get prestige() {
+    return this.obj.lvls.prestige;
   }
 
   /**

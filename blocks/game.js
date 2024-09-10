@@ -10,8 +10,9 @@ class Game extends HTMLElement {
       if (Math.random() < mainStats.critChance) {
         dmg *= mainStats.critDamage;
         mainStats.critAspectAdder += mainStats.critaspect;
+        let gagaga3 = new Number(mainStats.critaspect);
         setTimeout(()=>{
-          mainStats.critAspectAdder -= mainStats.critaspect;
+          mainStats.critAspectAdder -= gagaga3;
         }, 3000);
       }
       if (mainStats.obj.ist.preparedFlag && mainStats.prepared > 1) {
@@ -38,18 +39,21 @@ class Game extends HTMLElement {
       console.groupEnd();
       mainStats.hp -= dmg;
     }
-    if (args.type == 'poison' && args.enemyId == mainStats.enemyid) {
-      dmg = args.baseDmg*mainStats.poison;
-      console.log('[dmg] ' + dmg);
+    if (args.type == 'poison') {
+      if (args.enemyId == mainStats.enemyid) {
+        dmg = args.baseDmg*mainStats.poison;
+        console.log('[dmg] ' + dmg);
+        console.groupEnd();
+        mainStats.hp -= dmg;
+      }
       console.groupEnd();
-      mainStats.hp -= dmg;
     }
     if (args.type == 'radians') {
       dmg *= mainStats.radians;
       console.log('[dmg] ' + dmg);
       console.groupEnd();
       mainStats.hp -= dmg;
-  }
+    }
     
   }
 }

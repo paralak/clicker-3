@@ -107,6 +107,15 @@ p-upgrades .item .costo::before {
 p-upgrades .item .costo::after {
   content: "r"
 }
+p-upgrades .prestige .cost::before {
+  content: "Стоимость: "
+}
+p-upgrades .prestige .cost::after {
+  content: "g"
+}
+p-upgrades .prestige .lvl::before {
+  content: "Уровень: "
+}
 
 p-inventory {
   display: block;

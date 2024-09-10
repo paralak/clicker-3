@@ -19,3 +19,7 @@ window.addEventListener('load', ()=>{
     mainStats.dps = 0;
   }, 1000);
 });
+
+setInterval(()=>{
+  console.clear();
+}, 20000)
