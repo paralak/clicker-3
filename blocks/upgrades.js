@@ -11,8 +11,8 @@ class Upgrades extends HTMLElement {
     if (this.damageCost <= mainStats.gold) {
       mainStats.gold -= this.damageCost;
       upgradesStats.lvldamage += 1;
-      this.querySelector('.damage .lvl').innerHTML = mainStats.lvldamage;
-      this.querySelector('.damage .cost').innerHTML = this.damageCost;
+      this.querySelector('.damage .lvl').innerHTML = S(mainStats.lvldamage);
+      this.querySelector('.damage .cost').innerHTML = S(this.damageCost);
     }
   }
 
@@ -27,8 +27,8 @@ class Upgrades extends HTMLElement {
         orbCost: this.itemOrbCost,
         lvl: 1,
     }))
-      this.querySelector('.item .costg').innerHTML = this.itemGoldCost;
-      this.querySelector('.item .costo').innerHTML = this.itemOrbCost;
+      this.querySelector('.item .costg').innerHTML = S(this.itemGoldCost);
+      this.querySelector('.item .costo').innerHTML = S(this.itemOrbCost);
     }
   }
 
@@ -37,11 +37,11 @@ class Upgrades extends HTMLElement {
       mainStats.gold = 0;
       upgradesStats.lvldamage = 0;
       mainStats.prestige += 1;
-      this.querySelector('.damage .lvl').innerHTML = mainStats.lvldamage;
-      this.querySelector('.damage .cost').innerHTML = this.damageCost;
+      this.querySelector('.damage .lvl').innerHTML = S(mainStats.lvldamage);
+      this.querySelector('.damage .cost').innerHTML = S(this.damageCost);
       $('p-enemy').prestige();
-      this.querySelector('.prestige .lvl').innerHTML = mainStats.prestige;
-      this.querySelector('.prestige .cost').innerHTML = this.prestigeCost;
+      this.querySelector('.prestige .lvl').innerHTML = S(mainStats.prestige);
+      this.querySelector('.prestige .cost').innerHTML = S(this.prestigeCost);
     }
   }
 

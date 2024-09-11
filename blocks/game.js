@@ -6,7 +6,7 @@ class Game extends HTMLElement {
     console.group('[damage]');
     console.log('[type] ' + args.type);
     let dmg = mainStats.baseDamage;
-    if (args.type == 'main') {
+    if (args.type == 'main' || args.type == 'doublehit') {
       if (Math.random() < mainStats.critChance) {
         dmg *= mainStats.critDamage;
         mainStats.critAspectAdder += mainStats.critaspect;
@@ -32,6 +32,18 @@ class Game extends HTMLElement {
             baseDmg:gagaga2,
           });
         }, 3000*i + 3000);
+      }
+      let doublehitA = 0;
+      let doublehitB = new Number(mainStats.doublehit);
+      while (doublehitB > 0.0001 && args.type != 'doublehit') {
+        if (Math.random() < doublehitB) setTimeout(()=>{
+          $('p-game').attack({
+            type:'doublehit',
+            enemy:args.enemy,
+          })
+        }, 100+doublehitA*100);
+        doublehitB -= 1;
+        doublehitA += 1;
       }
       mainStats.gold += dmg*0.1;
       console.log('[gold] ' + dmg*0.1);

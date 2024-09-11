@@ -22,4 +22,8 @@ window.addEventListener('load', ()=>{
 
 setInterval(()=>{
   console.clear();
-}, 20000)
+}, 20000);
+
+window.onbeforeunload = function() {
+  return "Закрыть игру?";
+};

@@ -108,7 +108,7 @@ itemStatsProto = {
     bName: "червя",
     cName: "плоский",
     val: (t)=>{
-      return t.startVal*(0.25 + (t.lvl)**1.5/4*3);
+      return t.startVal*(3/4 + (t.lvl)**1.3/4);
     },
     displayval: (t)=>{
       return S(t.val);
@@ -220,6 +220,21 @@ itemStatsProto = {
     },
     rarity: "rare",
   },
+  "doublehit":{
+    name: "doublehit",
+    nameRu: "Двойной",
+    startVal: 0.03,
+    aName: "язык",
+    bName: "гидры",
+    cName: "двойной",
+    val: (t)=>{
+      return t.startVal*(1/2 + t.lvl/2);
+    },
+    displayval: (t)=>{
+      return S(t.val*100) + "%";
+    },
+    rarity: "epic",
+  },
   getRandom: ()=>{
     let r = Math.random();
     let rar = ""
@@ -250,6 +265,7 @@ itemStatsProto = {
       const i = [
         itemStatsProto["critrate"],
         itemStatsProto["extrareward"],
+        itemStatsProto["doublehit"],
       ]
       let r = Math.floor(Math.random()*i.length);
       return i[r];

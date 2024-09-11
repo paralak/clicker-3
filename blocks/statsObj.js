@@ -37,6 +37,7 @@ class StatsObj {
           flatreward:0,
           extrareward:0,
           poison:0,
+          doublehit:0,
         }
       }
     }
@@ -49,7 +50,7 @@ class StatsObj {
       let i = 0;
       while (t>0) {
         r += t;
-        t -= 2**i * 10;
+        t -= Math.floor(1.7**i * 8);
         i++;
       }
     }
@@ -232,6 +233,19 @@ class StatsObj {
   /**
    * @param {Number} v
    */
+  set doublehit(v) {
+    if (this.#link) {
+      this.#link.doublehit += v - this.doublehit;
+    }
+    return this.obj.ist.doublehit = v;
+  }
+  get doublehit() {
+    return this.obj.ist.doublehit;
+  }
+
+  /**
+   * @param {Number} v
+   */
   set gold(v) {
     return this.obj.curs.gold = v;
   }
@@ -298,6 +312,7 @@ class StatsObj {
       v.flatreward += this.obj.ist.flatreward;
       v.extrareward += this.obj.ist.extrareward;
       v.poison += this.obj.ist.poison;
+      v.doublehit += this.obj.ist.doublehit;
     }
     return this.#link = v;
   }
@@ -317,6 +332,7 @@ class StatsObj {
       this.#link.flatreward -= this.obj.ist.flatreward;
       this.#link.extrareward -= this.obj.ist.extrareward;
       this.#link.poison -= this.obj.ist.poison;
+      this.#link.doublehit -= this.obj.ist.doublehit;
     }
   }
 
@@ -341,7 +357,7 @@ class StatsObj {
    * @param {Number} v
    */
   set maxhp(v) {
-    $('p-enemy .maxhp').innerHTML = v;
+    $('p-enemy .maxhp').innerHTML = S(v);
     return this.obj.enemy.maxhp = v;
   }
   get maxhp() {
