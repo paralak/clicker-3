@@ -65,7 +65,7 @@ class ItemStat {
   }
 
   get text() {
-    return this.nameRu + ": " + this.displayval + " ( " + Math.round(this.prefix*1000)/10 + "% )";
+    return this.nameRu + ": " + this.displayval + " (" + S(this.prefix*100) + "%)";
   }
 }
 
@@ -73,7 +73,7 @@ itemStatsProto = {
   "prepared":{
     name: "prepared",
     nameRu: "Подготовленный",
-    startVal: 4,
+    startVal: 3,
     aName: "молот",
     bName: "слона",
     cName: "тяжёлый",
@@ -108,7 +108,7 @@ itemStatsProto = {
     bName: "червя",
     cName: "плоский",
     val: (t)=>{
-      return t.startVal*(0.25 + 1.4**(t.lvl-1)/4*3);
+      return t.startVal*(0.25 + (t.lvl)**1.5/4*3);
     },
     displayval: (t)=>{
       return S(t.val);
@@ -126,7 +126,7 @@ itemStatsProto = {
       return t.startVal*(0.65 + t.lvl*0.35);
     },
     displayval: (t)=>{
-      return Math.round(t.val*100) + "%";
+      return S(t.val*100) + "%";
     },
     rarity: "rare",
   },
@@ -156,24 +156,24 @@ itemStatsProto = {
       return t.startVal*(0.5 + t.lvl*0.5);
     },
     displayval: (t)=>{
-      return Math.round(t.val*1000)/10 + "%";
+      return S(t.val*100) + "%";
     },
     rarity: "epic",
   },
   "critaspect":{
     name: "critaspect",
     nameRu: "Бронебойный",
-    startVal: 3,
+    startVal: 2,
     aName: "клевец",
     bName: "боксёра",
     cName: "сквозной",
     val: (t)=>{
-      return t.startVal*(0.5 + t.lvl**1.5*0.5);
+      return t.startVal*(2/3 + t.lvl**1.2/3);
     },
     displayval: (t)=>{
       return S(t.val);
     },
-    rarity: "common",
+    rarity: "rare",
   },
   "flatreward":{
     name: "flatreward",
@@ -201,7 +201,7 @@ itemStatsProto = {
       return t.startVal*(0.5 + t.lvl*0.5);
     },
     displayval: (t)=>{
-      return Math.round(t.val*1000)/10 + "%";
+      return S(t.val*100) + "%";
     },
     rarity: "epic",
   },
@@ -216,7 +216,7 @@ itemStatsProto = {
       return t.startVal*(3/4 + t.lvl/4);
     },
     displayval: (t)=>{
-      return Math.round(t.val*1000)/10 + "%";
+      return S(t.val*100) + "%";
     },
     rarity: "rare",
   },
@@ -231,7 +231,6 @@ itemStatsProto = {
         itemStatsProto["prepared"],
         itemStatsProto["critdamage"],
         itemStatsProto["flatdamage"],
-        itemStatsProto["critaspect"],
         itemStatsProto["flatreward"],
       ]
       let r = Math.floor(Math.random()*i.length);
@@ -242,6 +241,7 @@ itemStatsProto = {
         itemStatsProto["radians"],
         itemStatsProto["basereward"],
         itemStatsProto["poison"],
+        itemStatsProto["critaspect"],
       ]
       let r = Math.floor(Math.random()*i.length);
       return i[r];
