@@ -7,13 +7,15 @@ class Game extends HTMLElement {
     console.log('[type] ' + args.type);
     let dmg = mainStats.baseDamage;
     if (args.type == 'main' || args.type == 'doublehit') {
-      if (Math.random() < mainStats.critChance) {
+      let critA = new Number(mainStats.critChance);
+      while (Math.random() < critA) {
         dmg *= mainStats.critDamage;
         mainStats.critAspectAdder += mainStats.critaspect;
         let gagaga3 = new Number(mainStats.critaspect);
         setTimeout(()=>{
           mainStats.critAspectAdder -= gagaga3;
         }, 3000);
+        critA -= 1;
       }
       if (mainStats.obj.ist.preparedFlag && mainStats.prepared > 1) {
         dmg += mainStats.baseDamage * mainStats.prepared;

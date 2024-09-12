@@ -60,7 +60,7 @@ class StatsObj {
   }
 
   get critChance() {
-    return 0.05 + this.critrate;
+    return 0.1 + this.critrate;
   }
 
   get critDamage() {

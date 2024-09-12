@@ -88,7 +88,7 @@ itemStatsProto = {
   "critdamage":{
     name: "critdamage",
     nameRu: "Зазубренный",
-    startVal: 0.2,
+    startVal: 0.05,
     aName: "крюк",
     bName: "рыбака",
     cName: "зазубр.",
