@@ -14,7 +14,7 @@ class Enemy extends HTMLElement {
     console.group('[death]');
       console.group('[enemy]');
         console.log('[enemy id] ' + mainStats.enemyid);
-        console.log('[enemy hp] ' + mainStats.maxhp);
+        console.log('[enemy maxhp] ' + mainStats.maxhp);
         console.log('[enemy hp] ' + mainStats.hp);
         console.log('[enemy kill time] ' + (Date.now() - mainStats.lastDeathTime)/1000 + 's');
       console.groupEnd();
@@ -33,6 +33,7 @@ class Enemy extends HTMLElement {
       mainStats.enemyid += 1;
       mainStats.maxhp = Math.floor(mainStats.enemyid**1.4*(6 + mainStats.prestige)) + (50+mainStats.prestige*20);
       mainStats.hp = mainStats.maxhp;
+      mainStats.obj.ist.poisonDmgSum = 0;
       mainStats.lastDeathTime = Date.now();
     console.groupEnd();
   }

@@ -10,7 +10,7 @@ class ItemStat {
 
   constructor (args) {
     this.#name = args.name;
-    this.#prefix = 0.4+Math.random()**2;
+    this.#prefix = 0.1+Math.random()**2*1.4;
     this.#startVal = args.startVal;
     this.#val = args.val;
     this.#displayval = args.displayval;

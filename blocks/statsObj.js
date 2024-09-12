@@ -37,6 +37,7 @@ class StatsObj {
           flatreward:0,
           extrareward:0,
           poison:0,
+          poisonDmgSum:0,
           doublehit:0,
         }
       }

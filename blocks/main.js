@@ -27,3 +27,11 @@ setInterval(()=>{
 window.onbeforeunload = function() {
   return "Закрыть игру?";
 };
+
+setInterval(()=>{
+  if (mainStats.obj.ist.poisonDmgSum > 0.001)
+    $('p-game').attack({
+      type: 'poison',
+      enemy: $('p-enemy'),
+    });
+}, 100)
