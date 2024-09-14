@@ -31,7 +31,7 @@ class Enemy extends HTMLElement {
       mainStats.rpoints += 1;
       console.log('[rpoints] ' + 1);
       mainStats.enemyid += 1;
-      mainStats.maxhp = Math.floor(mainStats.enemyid**1.4*(6 + mainStats.prestige)) + (50+mainStats.prestige*20);
+      mainStats.maxhp = Math.floor(mainStats.enemyid**1.6*(6 + mainStats.prestige)) + (50+mainStats.prestige*20);
       mainStats.hp = mainStats.maxhp;
       mainStats.obj.ist.poisonDmgSum = 0;
       mainStats.lastDeathTime = Date.now();
