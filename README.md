@@ -1,5 +1,9 @@
 # clicker 3
 
+## 0.2.2c
+
+здоровье увеличено (с enemyid^1.6\*(6 + 2\*prestige) + (50 + 20\*prestige) до enemyid^1.6\*(6 + 2\*prestige) + (10 + 20\*prestige))
+
 ## 0.2.2b
 
 прирост здоровья увеличен (с enemyid^1.4\*(6 + 2\*prestige) + (50 + 20\*prestige) до enemyid^1.6\*(6 + 2\*prestige) + (50 + 20\*prestige))
