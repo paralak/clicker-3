@@ -49,7 +49,7 @@ class Enemy extends HTMLElement {
 
   prestige() {
     mainStats.enemyid = 0,
-    mainStats.maxhp = Math.floor(mainStats.enemyid**1.4*(6 + mainStats.prestige)) + (50+mainStats.prestige*20);
+    mainStats.maxhp = Math.floor(mainStats.enemyid**1.6*(6 + mainStats.prestige)) + (10+mainStats.prestige*20);
     mainStats.hp = mainStats.maxhp;
     mainStats.lastDeathTime = Date.now();
   }

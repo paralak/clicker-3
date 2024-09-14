@@ -21,8 +21,8 @@ class StatsObj {
         },
         enemy:{
           id:0,
-          hp:50,
-          maxhp:50,
+          hp:10,
+          maxhp:10,
         },
         ist:{
           prepared:0,
