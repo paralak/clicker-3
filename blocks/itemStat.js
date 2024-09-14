@@ -10,7 +10,7 @@ class ItemStat {
 
   constructor (args) {
     this.#name = args.name;
-    this.#prefix = 0.1+Math.random()**2*1.4;
+    this.#prefix = 0.1+Math.random()**2*1.9;
     this.#startVal = args.startVal;
     this.#val = args.val;
     this.#displayval = args.displayval;
@@ -243,7 +243,7 @@ itemStatsProto = {
     bName: "строителя",
     cName: "базовый",
     val: (t)=>{
-      return t.startVal*(2/3 + (t.lvl)**1.3/3);
+      return t.startVal*(2/3 + (t.lvl)**1.5/3);
     },
     displayval: (t)=>{
       return S(t.val);
