@@ -43,6 +43,7 @@ class Enemy extends HTMLElement {
           dmgtonextenemy:dmgtonextenemy,
         })
       }, 100)
+      mainStats.obj.ist.dmgtonextenemy = 0;
     console.groupEnd();
   }
 
