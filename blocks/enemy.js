@@ -35,6 +35,14 @@ class Enemy extends HTMLElement {
       mainStats.hp = mainStats.maxhp;
       mainStats.obj.ist.poisonDmgSum = 0;
       mainStats.lastDeathTime = Date.now();
+      let dmgtonextenemy = new Number(mainStats.obj.ist.dmgtonextenemy);
+      setTimeout(()=>{
+        $('p-game').attack({
+          enemy:$('p-enemy'),
+          type:'dmgtonextenemy',
+          dmgtonextenemy:dmgtonextenemy,
+        })
+      }, 100)
     console.groupEnd();
   }
 

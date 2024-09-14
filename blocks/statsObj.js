@@ -39,6 +39,9 @@ class StatsObj {
           poison:0,
           poisonDmgSum:0,
           doublehit:0,
+          basedmg:0,
+          pushy:0,
+          dmgtonextenemy:0,
         }
       }
     }
@@ -56,6 +59,7 @@ class StatsObj {
       }
     }
     r += this.critAspectAdder;
+    r += this.basedmg;
     return r;
   }
 
@@ -247,6 +251,32 @@ class StatsObj {
   /**
    * @param {Number} v
    */
+  set basedmg(v) {
+    if (this.#link) {
+      this.#link.basedmg += v - this.basedmg;
+    }
+    return this.obj.ist.basedmg = v;
+  }
+  get basedmg() {
+    return this.obj.ist.basedmg;
+  }
+
+  /**
+   * @param {Number} v
+   */
+  set pushy(v) {
+    if (this.#link) {
+      this.#link.pushy += v - this.pushy;
+    }
+    return this.obj.ist.pushy = v;
+  }
+  get pushy() {
+    return this.obj.ist.pushy;
+  }
+
+  /**
+   * @param {Number} v
+   */
   set gold(v) {
     return this.obj.curs.gold = v;
   }
@@ -314,6 +344,8 @@ class StatsObj {
       v.extrareward += this.obj.ist.extrareward;
       v.poison += this.obj.ist.poison;
       v.doublehit += this.obj.ist.doublehit;
+      v.basedmg += this.obj.ist.basedmg;
+      v.pushy += this.obj.ist.pushy;
     }
     return this.#link = v;
   }
@@ -334,6 +366,8 @@ class StatsObj {
       this.#link.extrareward -= this.obj.ist.extrareward;
       this.#link.poison -= this.obj.ist.poison;
       this.#link.doublehit -= this.obj.ist.doublehit;
+      this.#link.basedmg -= this.obj.ist.basedmg;
+      this.#link.pushy -= this.obj.ist.pushy;
     }
   }
 

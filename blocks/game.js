@@ -23,6 +23,7 @@ class Game extends HTMLElement {
         console.log('[prepared damage] ' + mainStats.baseDamage * mainStats.prepared);
       }
       dmg += mainStats.flatdamage;
+      mainStats.obj.ist.dmgtonextenemy += mainStats.pushy;
       mainStats.obj.ist.poisonDmgSum += mainStats.baseDamage*mainStats.poison;
       let doublehitA = 0;
       let doublehitB = new Number(mainStats.doublehit);
@@ -51,6 +52,12 @@ class Game extends HTMLElement {
     }
     if (args.type == 'radians') {
       dmg *= mainStats.radians;
+      console.log('[dmg] ' + dmg);
+      console.groupEnd();
+      mainStats.hp -= dmg;
+    }
+    if (args.type == 'dmgtonextenemy') {
+      dmg = args.dmgtonextenemy;
       console.log('[dmg] ' + dmg);
       console.groupEnd();
       mainStats.hp -= dmg;

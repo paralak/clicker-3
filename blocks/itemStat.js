@@ -235,18 +235,49 @@ itemStatsProto = {
     },
     rarity: "epic",
   },
+  "basedmg":{
+    name: "basedmg",
+    nameRu: "Базовый",
+    startVal: 3,
+    aName: "кирпич",
+    bName: "строителя",
+    cName: "базовый",
+    val: (t)=>{
+      return t.startVal*(2/3 + (t.lvl)**1.3/3);
+    },
+    displayval: (t)=>{
+      return S(t.val);
+    },
+    rarity: "rare",
+  },
+  "pushy":{
+    name: "pushy",
+    nameRu: "Волосатый",
+    startVal: 6,
+    aName: "мех",
+    bName: "животного",
+    cName: "волосатый",
+    val: (t)=>{
+      return t.startVal*(3/4 + (t.lvl)**1.3/4);
+    },
+    displayval: (t)=>{
+      return S(t.val);
+    },
+    rarity: "common",
+  },
   getRandom: ()=>{
     let r = Math.random();
     let rar = ""
     if (r>=0) rar = "common";
-    if (r>=0.65) rar = "rare";
-    if (r>=0.93) rar = "epic";
+    if (r>=0.70) rar = "rare";
+    if (r>=0.94) rar = "epic";
     if (rar == "common") {
       const i = [
         itemStatsProto["prepared"],
         itemStatsProto["critdamage"],
         itemStatsProto["flatdamage"],
         itemStatsProto["flatreward"],
+        itemStatsProto["pushy"],
       ]
       let r = Math.floor(Math.random()*i.length);
       return i[r];
@@ -257,6 +288,7 @@ itemStatsProto = {
         itemStatsProto["basereward"],
         itemStatsProto["poison"],
         itemStatsProto["critaspect"],
+        itemStatsProto["basedmg"],
       ]
       let r = Math.floor(Math.random()*i.length);
       return i[r];
