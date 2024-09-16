@@ -3,10 +3,10 @@ class Game extends HTMLElement {
 
   }
   attack(args) {
-    console.group('[damage]');
-    console.log('[type] ' + args.type);
     let dmg = mainStats.baseDamage;
     if (args.type == 'main' || args.type == 'doublehit') {
+      console.group('[damage]');
+      console.log('[type] ' + args.type);
       let critA = new Number(mainStats.critChance);
       while (Math.random() < critA) {
         dmg *= mainStats.critDamage;
@@ -15,6 +15,7 @@ class Game extends HTMLElement {
         setTimeout(()=>{
           mainStats.critAspectAdder -= gagaga3;
         }, 3000);
+        mainStats.poisonDmgSum += dmg*mainStats.bleeding;
         critA -= 1;
       }
       if (mainStats.obj.ist.preparedFlag && mainStats.prepared > 1) {
@@ -44,19 +45,25 @@ class Game extends HTMLElement {
       mainStats.hp -= dmg;
     }
     if (args.type == 'poison') {
-      dmg = mainStats.obj.ist.poisonDmgSum;
-      mainStats.obj.ist.poisonDmgSum *= 0.5;
+      console.group('[damage]');
+      console.log('[type] ' + args.type);
+      dmg = mainStats.obj.ist.poisonDmgSum/2;
+      mainStats.obj.ist.poisonDmgSum *= 3/4;
       console.log('[dmg] ' + dmg);
       console.groupEnd();
       mainStats.hp -= dmg;
     }
     if (args.type == 'radians') {
+      console.group('[damage]');
+      console.log('[type] ' + args.type);
       dmg *= mainStats.radians;
       console.log('[dmg] ' + dmg);
       console.groupEnd();
       mainStats.hp -= dmg;
     }
     if (args.type == 'dmgtonextenemy') {
+      console.group('[damage]');
+      console.log('[type] ' + args.type);
       dmg = args.dmgtonextenemy;
       console.log('[dmg] ' + dmg);
       console.groupEnd();

@@ -42,6 +42,7 @@ class StatsObj {
           basedmg:0,
           pushy:0,
           dmgtonextenemy:0,
+          bleeding:0,
         }
       }
     }
@@ -277,6 +278,19 @@ class StatsObj {
   /**
    * @param {Number} v
    */
+  set bleeding(v) {
+    if (this.#link) {
+      this.#link.bleeding += v - this.bleeding;
+    }
+    return this.obj.ist.bleeding = v;
+  }
+  get bleeding() {
+    return this.obj.ist.bleeding;
+  }
+
+  /**
+   * @param {Number} v
+   */
   set gold(v) {
     return this.obj.curs.gold = v;
   }
@@ -346,6 +360,7 @@ class StatsObj {
       v.doublehit += this.obj.ist.doublehit;
       v.basedmg += this.obj.ist.basedmg;
       v.pushy += this.obj.ist.pushy;
+      v.bleeding += this.obj.ist.bleeding;
     }
     return this.#link = v;
   }
@@ -368,6 +383,7 @@ class StatsObj {
       this.#link.doublehit -= this.obj.ist.doublehit;
       this.#link.basedmg -= this.obj.ist.basedmg;
       this.#link.pushy -= this.obj.ist.pushy;
+      this.#link.bleeding -= this.obj.ist.bleeding;
     }
   }
 

@@ -265,6 +265,21 @@ itemStatsProto = {
     },
     rarity: "common",
   },
+  "bleeding":{
+    name: "bleeding",
+    nameRu: "Кровавый",
+    startVal: 0.01,
+    aName: "осколок",
+    bName: "багрянца",
+    cName: "кровавый",
+    val: (t)=>{
+      return t.startVal*(1/2 + t.lvl/2);
+    },
+    displayval: (t)=>{
+      return S(t.val*100) + "%";
+    },
+    rarity: "epic",
+  },
   getRandom: ()=>{
     let r = Math.random();
     let rar = ""
@@ -298,6 +313,7 @@ itemStatsProto = {
         itemStatsProto["critrate"],
         itemStatsProto["extrareward"],
         itemStatsProto["doublehit"],
+        itemStatsProto["bleeding"],
       ]
       let r = Math.floor(Math.random()*i.length);
       return i[r];
