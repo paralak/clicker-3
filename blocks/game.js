@@ -15,7 +15,7 @@ class Game extends HTMLElement {
         setTimeout(()=>{
           mainStats.critAspectAdder -= gagaga3;
         }, 3000);
-        mainStats.poisonDmgSum += dmg*mainStats.bleeding;
+        mainStats.obj.ist.poisonDmgSum += dmg*mainStats.bleeding;
         critA -= 1;
       }
       if (mainStats.obj.ist.preparedFlag && mainStats.prepared > 1) {
