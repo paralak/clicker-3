@@ -8,7 +8,7 @@ setInterval(()=>{
 
 window.addEventListener('load', ()=>{
   setInterval(()=>{
-    if (mainStats.radians > 0.01)
+    if (mainStats.radians > 0.01 && !document.hidden)
       $('p-game').attack({
         type: 'radians',
         enemy: $('p-enemy'),
@@ -36,20 +36,21 @@ setInterval(()=>{
     });
 }, 100);
 
-window.addEventListener('focusout',()=>{
-  mainStats.obj.ist.unfocusTime=Date.now();
-  console.log('[f'+mainStats.obj.ist.unfocusTime);
+document.addEventListener('visibilitychange',()=>{
+  if (document.hidden) {
+    mainStats.obj.ist.unfocusTime=Date.now();
+  }
 });
 
-window.addEventListener('focusin',()=>{
-  let t =(Date.now()-mainStats.obj.ist.unfocusTime)/3000;
-  console.log('[f'+Date.now());
-  console.log('[f'+t);
-  for(let i=0;i<t;i++){
-    if (mainStats.radians > 0.01)
-      $('p-game').attack({
-        type: 'radians',
-        enemy: $('p-enemy'),
-      });
+document.addEventListener('visibilitychange',()=>{
+  if (!document.hidden) {
+    let t =(Date.now()-mainStats.obj.ist.unfocusTime)/3000;
+    for(let i=0;i<t;i++){
+      if (mainStats.radians > 0.01)
+        $('p-game').attack({
+          type: 'radians',
+          enemy: $('p-enemy'),
+        });
+    }
   }
 });
