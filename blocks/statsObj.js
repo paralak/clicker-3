@@ -43,6 +43,7 @@ class StatsObj {
           pushy:0,
           dmgtonextenemy:0,
           bleeding:0,
+          unfocusTime: Date.now(),
         }
       }
     }
