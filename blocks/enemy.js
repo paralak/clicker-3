@@ -19,10 +19,10 @@ class Enemy extends HTMLElement {
         console.log('[enemy kill time] ' + (Date.now() - mainStats.lastDeathTime)/1000 + 's');
       console.groupEnd();
       console.group('[gold]');
-        mainStats.gold += mainStats.maxhp * (1 + mainStats.extrareward);
-        console.log('[maxhp reward] ' + mainStats.maxhp * (1 + mainStats.extrareward));
-        mainStats.gold += mainStats.enemyid * mainStats.basereward;
-        console.log('[id reward] ' + mainStats.enemyid * mainStats.basereward);
+        mainStats.gold += mainStats.maxhp * mainStats.extrareward;
+        console.log('[maxhp reward] ' + mainStats.maxhp * mainStats.extrareward);
+        mainStats.gold += mainStats.enemyid * (10 + mainStats.prestige + mainStats.basereward) + 10;
+        console.log('[id reward] ' + (mainStats.enemyid * (10 + mainStats.prestige + mainStats.basereward) + 10));
         mainStats.gold += mainStats.flatreward
         console.log('[flat reward] ' + mainStats.flatreward);
       console.groupEnd();
