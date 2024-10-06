@@ -280,12 +280,28 @@ itemStatsProto = {
     },
     rarity: "epic",
   },
+  "sale":{ 
+    name: "sale",
+    nameRu: "Дешевый",
+    startVal: 3,
+    aName: "монета",
+    bName: "банкира",
+    cName: "дешевый",
+    val: (t)=>{
+      return t.startVal*(3/4 + t.lvl/4);
+    },
+    displayval: (t)=>{
+      return S((1 - 0.99**t.val)*100) + "%";
+    },
+    rarity: "legendary",
+  },
   getRandom: ()=>{
     let r = Math.random();
     let rar = ""
     if (r>=0) rar = "common";
     if (r>=0.7) rar = "rare";
     if (r>=0.94) rar = "epic";
+    if (r>=0.7) rar = "legendary"
     if (rar == "common") {
       const i = [
         itemStatsProto["prepared"],
@@ -293,6 +309,7 @@ itemStatsProto = {
         itemStatsProto["flatdamage"],
         itemStatsProto["flatreward"],
         itemStatsProto["pushy"],
+        
       ]
       let r = Math.floor(Math.random()*i.length);
       return i[r];
@@ -314,6 +331,13 @@ itemStatsProto = {
         itemStatsProto["extrareward"],
         itemStatsProto["doublehit"],
         itemStatsProto["bleeding"],
+      ]
+      let r = Math.floor(Math.random()*i.length);
+      return i[r];
+    }
+    if (rar == "legendary") {
+      const i = [
+        itemStatsProto["sale"],
       ]
       let r = Math.floor(Math.random()*i.length);
       return i[r];

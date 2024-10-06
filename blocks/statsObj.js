@@ -44,6 +44,7 @@ class StatsObj {
           dmgtonextenemy:0,
           bleeding:0,
           unfocusTime: Date.now(),
+          sale:0,
         }
       }
     }
@@ -288,7 +289,18 @@ class StatsObj {
   get bleeding() {
     return this.obj.ist.bleeding;
   }
-
+  /**
+     * @param {Number} v
+     */
+  set sale(v) {
+    if (this.#link) {
+      this.#link.sale += v - this.sale;
+    }
+    return this.obj.ist.sale = v;
+  }
+  get sale() {
+    return this.obj.ist.sale;
+  }
   /**
    * @param {Number} v
    */
@@ -362,6 +374,7 @@ class StatsObj {
       v.basedmg += this.obj.ist.basedmg;
       v.pushy += this.obj.ist.pushy;
       v.bleeding += this.obj.ist.bleeding;
+      v.sale += this.obj.ist.sale;
     }
     return this.#link = v;
   }
@@ -385,6 +398,7 @@ class StatsObj {
       this.#link.basedmg -= this.obj.ist.basedmg;
       this.#link.pushy -= this.obj.ist.pushy;
       this.#link.bleeding -= this.obj.ist.bleeding;
+      this.#link.sale -= this.obj.ist.sale;
     }
   }
 
