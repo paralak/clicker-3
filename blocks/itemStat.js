@@ -284,7 +284,7 @@ itemStatsProto = {
     name: "sale",
     nameRu: "Дешевый",
     startVal: 3,
-    aName: "монета",
+    aName: "вклад",
     bName: "банкира",
     cName: "дешевый",
     val: (t)=>{
