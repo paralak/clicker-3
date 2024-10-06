@@ -46,7 +46,7 @@ class Upgrades extends HTMLElement {
   }
 
   get damageCost() {
-    return Math.floor(upgradesStats.lvldamage**1.6 * 6) + 10;
+    return (Math.floor(upgradesStats.lvldamage**1.6 * 6) + 10)*0.99**mainStats.sale;
   }
 
   get itemOrbCost() {

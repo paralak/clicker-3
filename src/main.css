@@ -154,6 +154,9 @@ p-inventory .rare {
 p-inventory .epic {
   color: #ff19f3;
 }
+p-inventory .legendary {
+  color: #f08f00;
+}
 p-inventory .fixed::after {
   content: "🔒";
   filter: grayscale(1);
