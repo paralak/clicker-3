@@ -301,7 +301,7 @@ itemStatsProto = {
     if (r>=0) rar = "common";
     if (r>=0.7) rar = "rare";
     if (r>=0.94) rar = "epic";
-    if (r>=0.7) rar = "legendary"
+    if (r>=0.99) rar = "legendary"
     if (rar == "common") {
       const i = [
         itemStatsProto["prepared"],

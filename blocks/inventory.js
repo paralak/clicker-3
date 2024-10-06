@@ -107,17 +107,17 @@ class Inventory extends HTMLElement {
       $('p-inventory #slot' + i + ' .reforge .cost').innerHTML = this.#items[i].reforgeCost;
       if (this.#items[i].stat1) {
         $('p-inventory #slot' + i + ' .stat1').innerHTML = this.#items[i].stat1.text;
-        $('p-inventory #slot' + i + ' .stat1').classList.remove('common', 'rare', 'epic');
+        $('p-inventory #slot' + i + ' .stat1').classList.remove('common', 'rare', 'epic','legendary');
         $('p-inventory #slot' + i + ' .stat1').classList.add(this.#items[i].stat1.rarity);
       }
       if (this.#items[i].stat2) {
         $('p-inventory #slot' + i + ' .stat2').innerHTML = this.#items[i].stat2.text;
-        $('p-inventory #slot' + i + ' .stat2').classList.remove('common', 'rare', 'epic');
+        $('p-inventory #slot' + i + ' .stat2').classList.remove('common', 'rare', 'epic','legendary');
         $('p-inventory #slot' + i + ' .stat2').classList.add(this.#items[i].stat2.rarity);
       }
       if (this.#items[i].stat3) {
         $('p-inventory #slot' + i + ' .stat3').innerHTML = this.#items[i].stat3.text;
-        $('p-inventory #slot' + i + ' .stat3').classList.remove('common', 'rare', 'epic');
+        $('p-inventory #slot' + i + ' .stat3').classList.remove('common', 'rare', 'epic','legendary');
         $('p-inventory #slot' + i + ' .stat3').classList.add(this.#items[i].stat3.rarity);
       }
     }
