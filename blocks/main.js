@@ -8,7 +8,7 @@ setInterval(()=>{
 
 window.addEventListener('load', ()=>{
   setInterval(()=>{
-    if (mainStats.radians > 0.01)
+    if (mainStats.radians > 0.01 && !document.hidden)
       $('p-game').attack({
         type: 'radians',
         enemy: $('p-enemy'),
@@ -34,4 +34,23 @@ setInterval(()=>{
       type: 'poison',
       enemy: $('p-enemy'),
     });
-}, 100)
+}, 100);
+
+document.addEventListener('visibilitychange',()=>{
+  if (document.hidden) {
+    mainStats.obj.ist.unfocusTime=Date.now();
+  }
+});
+
+document.addEventListener('visibilitychange',()=>{
+  if (!document.hidden) {
+    let t =(Date.now()-mainStats.obj.ist.unfocusTime)/3000;
+    for(let i=0;i<t;i++){
+      if (mainStats.radians > 0.01)
+        $('p-game').attack({
+          type: 'radians',
+          enemy: $('p-enemy'),
+        });
+    }
+  }
+});

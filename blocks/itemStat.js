@@ -284,7 +284,7 @@ itemStatsProto = {
     let r = Math.random();
     let rar = ""
     if (r>=0) rar = "common";
-    if (r>=0.70) rar = "rare";
+    if (r>=0.7) rar = "rare";
     if (r>=0.94) rar = "epic";
     if (rar == "common") {
       const i = [
