@@ -180,7 +180,7 @@ itemStatsProto = {
     nameRu: "Толстый",
     startVal: 4,
     aName: "кошель",
-    bName: "принц",
+    bName: "принца",
     cName: "толстый",
     val: (t)=>{
       return t.startVal*(0.5 + t.lvl**1.5*0.5);
