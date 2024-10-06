@@ -284,7 +284,7 @@ itemStatsProto = {
     let r = Math.random();
     let rar = ""
     if (r>=0) rar = "common";
-    if (r>=0.31) rar = "rare";
+    if (r>=0.7) rar = "rare";
     if (r>=0.94) rar = "epic";
     if (rar == "common") {
       const i = [
@@ -300,10 +300,10 @@ itemStatsProto = {
     if (rar == "rare") {
       const i = [
         itemStatsProto["radians"],
-        // itemStatsProto["basereward"],
-        // itemStatsProto["poison"],
-        // itemStatsProto["critaspect"],
-        // itemStatsProto["basedmg"],
+        itemStatsProto["basereward"],
+        itemStatsProto["poison"],
+        itemStatsProto["critaspect"],
+        itemStatsProto["basedmg"],
       ]
       let r = Math.floor(Math.random()*i.length);
       return i[r];
