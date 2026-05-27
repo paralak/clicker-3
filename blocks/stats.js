@@ -1,5 +1,6 @@
 class Stats extends HTMLElement {
-  #hpHistory = []
+  #hpHistory = new Array(100).fill(100)
+  #hpIdx = 0
   connectedCallback() {
     const t = this;
     setInterval(() => {
@@ -14,9 +15,9 @@ class Stats extends HTMLElement {
       $('p-stats .basedamage').innerHTML = S(mainStats.baseDamage);
       $('p-stats .bossorb').innerHTML = S(mainStats.bossorb);
       const curPct = Math.max(0, mainStats.hp / mainStats.maxhp * 100);
-      this.#hpHistory.push(curPct);
-      if (this.#hpHistory.length > 100) this.#hpHistory.shift();
-      $('p-enemy .hpbar-ghost-fill').style.width = (this.#hpHistory[0] ?? curPct) + '%';
+      this.#hpHistory[this.#hpIdx] = curPct;
+      this.#hpIdx = (this.#hpIdx + 1) % 100;
+      $('p-enemy .hpbar-ghost-fill').style.width = this.#hpHistory[this.#hpIdx] + '%';
 
       const bossBar = $('p-enemy .bossbar');
       if (mainStats.obj.ist.bossStartTime !== null) {
