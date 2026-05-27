@@ -4,6 +4,7 @@
   <title>Clicker 3</title>
   <link rel="stylesheet" href="src/main.css">
   <script src="blocks/preload.js"></script>
+  <script src="blocks/effects.js"></script>
   <script src="blocks/itemStat.js"></script>
   <script src="blocks/item.js"></script>
   <script src="blocks/inventory.js"></script>
@@ -20,11 +21,9 @@
       <p-enemy>
         <div class="enemy">
           <div class="hpbar">
+            <div class="hpbar-ghost-fill"></div>
             <div class="hpbar-fill"></div>
             <span class="hptext"><span class="hp">10</span> / <span class="maxhp">10</span></span>
-          </div>
-          <div class="hpbar-ghost">
-            <div class="hpbar-ghost-fill"></div>
           </div>
           <div class="bossbar">
             <div class="bossbar-fill"></div>
@@ -59,7 +58,7 @@
         </button>
         <button class="forge">
           Кузня<br>
-          <span class="lvl">0</span><br>
+          <span class="lvl">1</span><br>
           <span class="cost">1</span>
         </button>
       </p-upgrades>

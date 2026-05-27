@@ -63,12 +63,12 @@ class Upgrades extends HTMLElement {
   }
 
   tryForgeUpgrade() {
-    const cost = mainStats.forgeLevel + 1;
+    const cost = mainStats.forgeLevel;
     if (cost <= mainStats.bossorb) {
       mainStats.bossorb -= cost;
       mainStats.forgeLevel += 1;
       this.querySelector('.forge .lvl').innerHTML = mainStats.forgeLevel;
-      this.querySelector('.forge .cost').innerHTML = mainStats.forgeLevel + 1;
+      this.querySelector('.forge .cost').innerHTML = mainStats.forgeLevel;
     }
   }
 }

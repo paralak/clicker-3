@@ -19,7 +19,7 @@ class StatsObj {
         lvls:{
           damage:0,
           prestige:0,
-          forge:0,
+          forge:1,
         },
         enemy:{
           id:0,
@@ -433,7 +433,8 @@ class StatsObj {
     const pct = Math.max(0, v / this.obj.enemy.maxhp * 100);
     const fill = $('p-enemy .hpbar-fill');
     fill.style.width = pct + '%';
-    fill.style.background = pct > 50 ? '#3a9e4a' : pct > 25 ? '#c97d1a' : '#b83030';
+    const hue = Math.round(45 + pct * 0.7);
+    fill.style.background = `hsl(${hue}, 55%, 38%)`;
     if (v<=0) {
       $('p-enemy').death();
     }

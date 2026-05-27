@@ -1,11 +1,15 @@
 class Stats extends HTMLElement {
-  #hpHistory = new Array(100).fill(100)
+  #hpHistory = new Array(30).fill(100)
   #hpIdx = 0
   connectedCallback() {
     const t = this;
     setInterval(() => {
       t.update();
     }, 10);
+  }
+  resetGhost() {
+    this.#hpHistory.fill(100);
+    this.#hpIdx = 0;
   }
   update() {
     if (mainStats) {
@@ -16,7 +20,7 @@ class Stats extends HTMLElement {
       $('p-stats .bossorb').innerHTML = S(mainStats.bossorb);
       const curPct = Math.max(0, mainStats.hp / mainStats.maxhp * 100);
       this.#hpHistory[this.#hpIdx] = curPct;
-      this.#hpIdx = (this.#hpIdx + 1) % 100;
+      this.#hpIdx = (this.#hpIdx + 1) % 30;
       $('p-enemy .hpbar-ghost-fill').style.width = this.#hpHistory[this.#hpIdx] + '%';
 
       const bossBar = $('p-enemy .bossbar');

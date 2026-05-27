@@ -25,6 +25,7 @@ p-enemy .enemy {
   height: 250px;
   width: 300px;
   border-radius: 10px;
+  position: relative;
 }
 p-enemy .hpbar {
   position: relative;
@@ -38,9 +39,10 @@ p-enemy .hpbar-fill {
   position: absolute;
   inset: 0;
   width: 100%;
-  background: #3a9e4a;
+  background: hsl(115, 55%, 38%);
   border-radius: 6px;
   transition: width 0.08s linear;
+  z-index: 2;
 }
 p-enemy .hptext {
   position: absolute;
@@ -50,23 +52,15 @@ p-enemy .hptext {
   justify-content: center;
   color: #fff;
   font-size: 13px;
-  z-index: 1;
-}
-p-enemy .hpbar-ghost {
-  position: relative;
-  background: #222;
-  height: 8px;
-  border-radius: 4px;
-  overflow: hidden;
-  margin: 3px 10px 0;
+  z-index: 3;
 }
 p-enemy .hpbar-ghost-fill {
   position: absolute;
   inset: 0;
   width: 100%;
-  background: #666;
-  border-radius: 4px;
-  transition: width 0.08s linear;
+  background: #888;
+  border-radius: 6px;
+  z-index: 1;
 }
 p-enemy .bossbar {
   position: relative;
