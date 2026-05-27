@@ -25,13 +25,69 @@ p-enemy .enemy {
   height: 250px;
   width: 300px;
   border-radius: 10px;
+  position: relative;
 }
 p-enemy .hpbar {
-  text-align: center;
-  color: aliceblue;
+  position: relative;
+  background: #222;
+  height: 28px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 10px 10px 6px;
 }
-p-enemy .hp::after {
-  content: ' / ';
+p-enemy .hpbar-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  background: hsl(115, 55%, 38%);
+  border-radius: 6px;
+  transition: width 0.08s linear;
+  z-index: 2;
+}
+p-enemy .hptext {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 13px;
+  z-index: 3;
+}
+p-enemy .hpbar-ghost-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  background: #888;
+  border-radius: 6px;
+  z-index: 1;
+}
+p-enemy .bossbar {
+  position: relative;
+  background: #222;
+  height: 18px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0 10px;
+  display: none;
+}
+p-enemy .bossbar-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  background: #d4561a;
+  border-radius: 6px;
+  transition: width 0.08s linear;
+}
+p-enemy .bosstime {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 11px;
+  z-index: 1;
 }
 p-stats {
   display: block;
@@ -64,6 +120,12 @@ p-stats .rpoints::after {
 }
 p-stats .basedamage::before {
   content: "Базовый урон: ";
+}
+p-stats .bossorb::before {
+  content: "Сферы босса: ";
+}
+p-stats .bossorb::after {
+  content: "б";
 }
 p-upgrades {
   display: block;
@@ -116,6 +178,15 @@ p-upgrades .prestige .cost::after {
 p-upgrades .prestige .lvl::before {
   content: "Уровень: "
 }
+p-upgrades .forge .lvl::before {
+  content: "Уровень: "
+}
+p-upgrades .forge .cost::before {
+  content: "Стоимость: "
+}
+p-upgrades .forge .cost::after {
+  content: "б"
+}
 
 p-inventory {
   display: block;
@@ -157,9 +228,13 @@ p-inventory .epic {
 p-inventory .legendary {
   color: #f08f00;
 }
-p-inventory .fixed::after {
-  content: "🔒";
-  filter: grayscale(1);
+p-inventory .reforgeselected {
+  outline: 1px solid #c97d1a;
+  border-radius: 2px;
+  background: #fff6e6;
+}
+p-inventory .reforgeselected::after {
+  content: "⚒";
   font-size: 90%;
 }
 p-inventory button {

@@ -10,6 +10,7 @@ class Game extends HTMLElement {
       let critA = new Number(mainStats.critChance);
       while (Math.random() < critA) {
         dmg *= mainStats.critDamage;
+        effects.crit();
         mainStats.critAspectAdder += mainStats.critaspect;
         let gagaga3 = new Number(mainStats.critaspect);
         setTimeout(()=>{
@@ -21,6 +22,7 @@ class Game extends HTMLElement {
       if (mainStats.obj.ist.preparedFlag && mainStats.prepared > 1) {
         dmg += mainStats.baseDamage * mainStats.prepared;
         mainStats.obj.ist.preparedFlag = false;
+        effects.prepared();
         console.log('[prepared damage] ' + mainStats.baseDamage * mainStats.prepared);
       }
       dmg += mainStats.flatdamage;
@@ -30,6 +32,7 @@ class Game extends HTMLElement {
       let doublehitB = new Number(mainStats.doublehit);
       while (doublehitB > 0.0001 && args.type != 'doublehit') {
         if (Math.random() < doublehitB) setTimeout(()=>{
+          effects.doublehit();
           $('p-game').attack({
             type:'doublehit',
             enemy:args.enemy,

@@ -19,6 +19,7 @@ class StatsObj {
         lvls:{
           damage:0,
           prestige:0,
+          forge:1,
         },
         enemy:{
           id:0,
@@ -111,6 +112,13 @@ class StatsObj {
   }
   get prestige() {
     return this.obj.lvls.prestige;
+  }
+
+  set forgeLevel(v) {
+    return this.obj.lvls.forge = v;
+  }
+  get forgeLevel() {
+    return this.obj.lvls.forge;
   }
 
   /**
@@ -418,10 +426,15 @@ class StatsObj {
    * @param {Number} v
    */
   set hp(v) {
-    if (v<this.obj.enemy.hp) 
+    if (v<this.obj.enemy.hp)
       this.dps += this.obj.enemy.hp - v;
     this.obj.enemy.hp = v;
     $('p-enemy .hp').innerHTML = S(v);
+    const pct = Math.max(0, v / this.obj.enemy.maxhp * 100);
+    const fill = $('p-enemy .hpbar-fill');
+    fill.style.width = pct + '%';
+    const hue = Math.round(45 + pct * 0.7);
+    fill.style.background = `hsl(${hue}, 55%, 38%)`;
     if (v<=0) {
       $('p-enemy').death();
     }

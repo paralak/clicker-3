@@ -73,6 +73,7 @@ class Enemy extends HTMLElement {
             mainStats.enemyid = bossId - 29;
             mainStats.maxhp = Math.floor(mainStats.enemyid**1.6*(6 + mainStats.prestige)) + (10+mainStats.prestige*20);
             mainStats.hp = mainStats.maxhp;
+            $('p-stats').resetGhost();
             mainStats.obj.ist.poisonDmgSum = 0;
             mainStats.obj.ist.noRewardFlag = true;
             console.log('[boss failed, reset to id=' + mainStats.enemyid + ']');
@@ -83,6 +84,7 @@ class Enemy extends HTMLElement {
       }
 
       mainStats.hp = mainStats.maxhp;
+      $('p-stats').resetGhost();
       mainStats.obj.ist.poisonDmgSum = 0;
       mainStats.lastDeathTime = Date.now();
       let dmgtonextenemy = new Number(mainStats.obj.ist.dmgtonextenemy);
