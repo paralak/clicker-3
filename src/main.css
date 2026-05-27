@@ -52,6 +52,22 @@ p-enemy .hptext {
   font-size: 13px;
   z-index: 1;
 }
+p-enemy .hpbar-ghost {
+  position: relative;
+  background: #222;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 3px 10px 0;
+}
+p-enemy .hpbar-ghost-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  background: #666;
+  border-radius: 4px;
+  transition: width 0.08s linear;
+}
 p-enemy .bossbar {
   position: relative;
   background: #222;
