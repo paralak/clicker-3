@@ -5,6 +5,7 @@ class Item {
   stat2fixed = false
   #stat3
   stat3fixed = false
+  reforgeSelected = 0
   #orbCost
   stats
   #lvl
@@ -78,12 +79,12 @@ class Item {
   }
 
   get reforgeCost() {
-    let r = 3;
-    if (this.stat1fixed) r*=7;
-    if (this.stat2fixed) r*=7;
-    if (this.stat3fixed) r*=7;
-    if (r>3*7*7) {
-      r = 0;
+    if (this.reforgeSelected === 0) return Infinity;
+    const rarityBase = {common:1, rare:2, epic:3, legendary:4};
+    const stat = this['stat' + this.reforgeSelected];
+    let r = rarityBase[stat.rarity] || 1;
+    for (let i = 1; i <= 3; i++) {
+      if (i !== this.reforgeSelected && this['stat' + i + 'fixed']) r *= 7;
     }
     return r;
   }

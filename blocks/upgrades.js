@@ -1,9 +1,10 @@
 class Upgrades extends HTMLElement {
   connectedCallback() {
-    window.addEventListener('load', ()=>{      
+    window.addEventListener('load', ()=>{
       this.querySelector('.damage').addEventListener('click', ()=>{this.tryDamageLvlUp()});
       this.querySelector('.item').addEventListener('click', ()=>{this.tryBuyItem()});
       this.querySelector('.prestige').addEventListener('click', ()=>{this.tryPrestige()});
+      this.querySelector('.forge').addEventListener('click', ()=>{this.tryForgeUpgrade()});
     })
   }
 
@@ -59,6 +60,16 @@ class Upgrades extends HTMLElement {
 
   get prestigeCost() {
     return 1000000*1.8**mainStats.prestige;
+  }
+
+  tryForgeUpgrade() {
+    const cost = mainStats.forgeLevel + 1;
+    if (cost <= mainStats.bossorb) {
+      mainStats.bossorb -= cost;
+      mainStats.forgeLevel += 1;
+      this.querySelector('.forge .lvl').innerHTML = mainStats.forgeLevel;
+      this.querySelector('.forge .cost').innerHTML = mainStats.forgeLevel + 1;
+    }
   }
 }
 

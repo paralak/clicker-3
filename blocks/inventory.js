@@ -21,66 +21,38 @@ class Inventory extends HTMLElement {
             $('p-inventory').reload();
           }
         });
-        $('p-inventory #slot' + i + ' .reforge').addEventListener('click', function reforgeFunc() {
-          if ($('p-inventory').items[i].reforgeCost <= mainStats.rpoints) {
-            mainStats.rpoints -= $('p-inventory').items[i].reforgeCost;
-            let t = [];
-            if (!$('p-inventory').items[i].stat1fixed) t.push(0);
-            if (!$('p-inventory').items[i].stat2fixed) t.push(1);
-            if (!$('p-inventory').items[i].stat3fixed) t.push(2);
-            if (t.length == 0) return 0;
-            switch (t[Math.floor(Math.random()*t.length)]) {
-              case 0:
-                $('p-inventory').items[i].stat1 = new ItemStat(itemStatsProto.getRandom());
-                break;
-              case 1:
-                $('p-inventory').items[i].stat2 = new ItemStat(itemStatsProto.getRandom());
-                break;
-              case 2:
-                $('p-inventory').items[i].stat3 = new ItemStat(itemStatsProto.getRandom());
-                break;
-              default:
-                break;
-            }
-            $('p-inventory').items[i].lvl = $('p-inventory').items[i].lvl;
-            $('p-inventory').reload();
-          }
-        });
-        $('p-inventory #slot' + i + ' .stat1').addEventListener('click', function () {
-          if ($('p-inventory').items[i].stat1fixed) {
-            $('p-inventory').items[i].stat1fixed = false;
-            $('p-inventory #slot' + i + ' .stat1').classList.replace('fixed', 'notfixed');
-          } else {
-            $('p-inventory').items[i].stat1fixed = true;
-            $('p-inventory #slot' + i + ' .stat1').classList.replace('notfixed', 'fixed');
-          }
+        $('p-inventory #slot' + i + ' .reforge').addEventListener('click', function () {
+          const item = $('p-inventory').items[i];
+          if (item.reforgeSelected === 0) return;
+          if (item.reforgeCost > mainStats.rpoints) return;
+          mainStats.rpoints -= item.reforgeCost;
+          item['stat' + item.reforgeSelected] = new ItemStat(itemStatsProto.getRandom());
+          item['stat' + item.reforgeSelected + 'fixed'] = false;
+          item.reforgeSelected = 0;
+          item.lvl = item.lvl;
           $('p-inventory').reload();
         });
-        $('p-inventory #slot' + i + ' .stat2').addEventListener('click', function () {
-          if ($('p-inventory').items[i].stat2fixed) {
-            $('p-inventory').items[i].stat2fixed = false;
-            $('p-inventory #slot' + i + ' .stat2').classList.replace('fixed', 'notfixed');
-          } else {
-            $('p-inventory').items[i].stat2fixed = true;
-            $('p-inventory #slot' + i + ' .stat2').classList.replace('notfixed', 'fixed');
-          }
-          $('p-inventory').reload();
-        });
-        $('p-inventory #slot' + i + ' .stat3').addEventListener('click', function () {
-          if ($('p-inventory').items[i].stat3fixed) {
-            $('p-inventory').items[i].stat3fixed = false;
-            $('p-inventory #slot' + i + ' .stat3').classList.replace('fixed', 'notfixed');
-          } else {
-            $('p-inventory').items[i].stat3fixed = true;
-            $('p-inventory #slot' + i + ' .stat3').classList.replace('notfixed', 'fixed');
-          }
-          $('p-inventory').reload();
-        });
+
+        for (let n=1; n<=3; n++) {
+          $('p-inventory #slot' + i + ' .stat' + n).addEventListener('click', (function(ii, nn) {
+            return function () {
+              const item = $('p-inventory').items[ii];
+              if (item['stat' + nn + 'fixed']) {
+                item['stat' + nn + 'fixed'] = false;
+              } else if (item.reforgeSelected === nn) {
+                item.reforgeSelected = 0;
+              } else {
+                item.reforgeSelected = nn;
+              }
+              $('p-inventory').reload();
+            };
+          })(i, n));
+        }
       }
     });
   }
   /**
-   * @param {Item} item 
+   * @param {Item} item
    */
   addItem (item) {
     if (this.#items.length < 8) {
@@ -104,21 +76,24 @@ class Inventory extends HTMLElement {
       $('p-inventory #slot' + i + ' .name').innerHTML = this.#items[i].name;
       $('p-inventory #slot' + i + ' .lvl').innerHTML = this.#items[i].lvl;
       $('p-inventory #slot' + i + ' .upgrade .cost').innerHTML = this.#items[i].upgradeCost;
-      $('p-inventory #slot' + i + ' .reforge .cost').innerHTML = this.#items[i].reforgeCost;
-      if (this.#items[i].stat1) {
-        $('p-inventory #slot' + i + ' .stat1').innerHTML = this.#items[i].stat1.text;
-        $('p-inventory #slot' + i + ' .stat1').classList.remove('common', 'rare', 'epic','legendary');
-        $('p-inventory #slot' + i + ' .stat1').classList.add(this.#items[i].stat1.rarity);
-      }
-      if (this.#items[i].stat2) {
-        $('p-inventory #slot' + i + ' .stat2').innerHTML = this.#items[i].stat2.text;
-        $('p-inventory #slot' + i + ' .stat2').classList.remove('common', 'rare', 'epic','legendary');
-        $('p-inventory #slot' + i + ' .stat2').classList.add(this.#items[i].stat2.rarity);
-      }
-      if (this.#items[i].stat3) {
-        $('p-inventory #slot' + i + ' .stat3').innerHTML = this.#items[i].stat3.text;
-        $('p-inventory #slot' + i + ' .stat3').classList.remove('common', 'rare', 'epic','legendary');
-        $('p-inventory #slot' + i + ' .stat3').classList.add(this.#items[i].stat3.rarity);
+
+      const sel = this.#items[i].reforgeSelected;
+      $('p-inventory #slot' + i + ' .reforge .cost').innerHTML = sel === 0 ? '—' : this.#items[i].reforgeCost;
+
+      for (let n=1; n<=3; n++) {
+        const statEl = $('p-inventory #slot' + i + ' .stat' + n);
+        if (!this.#items[i]['stat' + n]) continue;
+        statEl.innerHTML = this.#items[i]['stat' + n].text;
+        statEl.classList.remove('common', 'rare', 'epic', 'legendary');
+        statEl.classList.add(this.#items[i]['stat' + n].rarity);
+        statEl.classList.remove('fixed', 'notfixed', 'reforgeselected');
+        if (this.#items[i]['stat' + n + 'fixed']) {
+          statEl.classList.add('fixed');
+        } else if (sel === n) {
+          statEl.classList.add('reforgeselected');
+        } else {
+          statEl.classList.add('notfixed');
+        }
       }
     }
   }

@@ -19,6 +19,7 @@ class StatsObj {
         lvls:{
           damage:0,
           prestige:0,
+          forge:0,
         },
         enemy:{
           id:0,
@@ -111,6 +112,13 @@ class StatsObj {
   }
   get prestige() {
     return this.obj.lvls.prestige;
+  }
+
+  set forgeLevel(v) {
+    return this.obj.lvls.forge = v;
+  }
+  get forgeLevel() {
+    return this.obj.lvls.forge;
   }
 
   /**

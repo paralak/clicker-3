@@ -168,6 +168,15 @@ p-upgrades .prestige .cost::after {
 p-upgrades .prestige .lvl::before {
   content: "Уровень: "
 }
+p-upgrades .forge .lvl::before {
+  content: "Уровень: "
+}
+p-upgrades .forge .cost::before {
+  content: "Стоимость: "
+}
+p-upgrades .forge .cost::after {
+  content: "б"
+}
 
 p-inventory {
   display: block;
@@ -212,6 +221,15 @@ p-inventory .legendary {
 p-inventory .fixed::after {
   content: "🔒";
   filter: grayscale(1);
+  font-size: 90%;
+}
+p-inventory .reforgeselected {
+  outline: 1px solid #c97d1a;
+  border-radius: 2px;
+  background: #fff6e6;
+}
+p-inventory .reforgeselected::after {
+  content: "⚒";
   font-size: 90%;
 }
 p-inventory button {
