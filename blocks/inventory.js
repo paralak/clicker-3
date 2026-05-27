@@ -27,7 +27,6 @@ class Inventory extends HTMLElement {
           if (item.reforgeCost > mainStats.rpoints) return;
           mainStats.rpoints -= item.reforgeCost;
           item['stat' + item.reforgeSelected] = new ItemStat(itemStatsProto.getRandom());
-          item['stat' + item.reforgeSelected + 'fixed'] = false;
           item.reforgeSelected = 0;
           item.lvl = item.lvl;
           $('p-inventory').reload();
@@ -37,13 +36,7 @@ class Inventory extends HTMLElement {
           $('p-inventory #slot' + i + ' .stat' + n).addEventListener('click', (function(ii, nn) {
             return function () {
               const item = $('p-inventory').items[ii];
-              if (item['stat' + nn + 'fixed']) {
-                item['stat' + nn + 'fixed'] = false;
-              } else if (item.reforgeSelected === nn) {
-                item.reforgeSelected = 0;
-              } else {
-                item.reforgeSelected = nn;
-              }
+              item.reforgeSelected = item.reforgeSelected === nn ? 0 : nn;
               $('p-inventory').reload();
             };
           })(i, n));
@@ -86,14 +79,7 @@ class Inventory extends HTMLElement {
         statEl.innerHTML = this.#items[i]['stat' + n].text;
         statEl.classList.remove('common', 'rare', 'epic', 'legendary');
         statEl.classList.add(this.#items[i]['stat' + n].rarity);
-        statEl.classList.remove('fixed', 'notfixed', 'reforgeselected');
-        if (this.#items[i]['stat' + n + 'fixed']) {
-          statEl.classList.add('fixed');
-        } else if (sel === n) {
-          statEl.classList.add('reforgeselected');
-        } else {
-          statEl.classList.add('notfixed');
-        }
+        statEl.classList.toggle('reforgeselected', sel === n);
       }
     }
   }

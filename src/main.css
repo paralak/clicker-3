@@ -218,11 +218,6 @@ p-inventory .epic {
 p-inventory .legendary {
   color: #f08f00;
 }
-p-inventory .fixed::after {
-  content: "🔒";
-  filter: grayscale(1);
-  font-size: 90%;
-}
 p-inventory .reforgeselected {
   outline: 1px solid #c97d1a;
   border-radius: 2px;

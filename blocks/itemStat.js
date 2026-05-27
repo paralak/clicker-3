@@ -10,7 +10,7 @@ class ItemStat {
 
   constructor (args) {
     this.#name = args.name;
-    this.#prefix = 0.1 + Math.random()**2 * (1.9 + (typeof mainStats !== 'undefined' ? mainStats.forgeLevel * 0.1 : 0));
+    this.#prefix = 0.1 + Math.random()**2 * (0.9 + (typeof mainStats !== 'undefined' ? mainStats.forgeLevel * 0.1 : 0));
     this.#startVal = args.startVal;
     this.#val = args.val;
     this.#displayval = args.displayval;
