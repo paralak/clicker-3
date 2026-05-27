@@ -418,10 +418,14 @@ class StatsObj {
    * @param {Number} v
    */
   set hp(v) {
-    if (v<this.obj.enemy.hp) 
+    if (v<this.obj.enemy.hp)
       this.dps += this.obj.enemy.hp - v;
     this.obj.enemy.hp = v;
     $('p-enemy .hp').innerHTML = S(v);
+    const pct = Math.max(0, v / this.obj.enemy.maxhp * 100);
+    const fill = $('p-enemy .hpbar-fill');
+    fill.style.width = pct + '%';
+    fill.style.background = pct > 50 ? '#3a9e4a' : pct > 25 ? '#c97d1a' : '#b83030';
     if (v<=0) {
       $('p-enemy').death();
     }

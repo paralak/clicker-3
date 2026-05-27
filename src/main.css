@@ -27,11 +27,57 @@ p-enemy .enemy {
   border-radius: 10px;
 }
 p-enemy .hpbar {
-  text-align: center;
-  color: aliceblue;
+  position: relative;
+  background: #222;
+  height: 28px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 10px 10px 6px;
 }
-p-enemy .hp::after {
-  content: ' / ';
+p-enemy .hpbar-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  background: #3a9e4a;
+  border-radius: 6px;
+  transition: width 0.08s linear;
+}
+p-enemy .hptext {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 13px;
+  z-index: 1;
+}
+p-enemy .bossbar {
+  position: relative;
+  background: #222;
+  height: 18px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0 10px;
+  display: none;
+}
+p-enemy .bossbar-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  background: #d4561a;
+  border-radius: 6px;
+  transition: width 0.08s linear;
+}
+p-enemy .bosstime {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 11px;
+  z-index: 1;
 }
 p-stats {
   display: block;

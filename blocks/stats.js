@@ -12,12 +12,15 @@ class Stats extends HTMLElement {
       $('p-stats .rpoints').innerHTML = S(mainStats.rpoints);
       $('p-stats .basedamage').innerHTML = S(mainStats.baseDamage);
       $('p-stats .bossorb').innerHTML = S(mainStats.bossorb);
-      const bossEl = $('p-enemy .bosstime');
+      const bossBar = $('p-enemy .bossbar');
       if (mainStats.obj.ist.bossStartTime !== null) {
-        const remaining = Math.ceil(30 - (Date.now() - mainStats.obj.ist.bossStartTime) / 1000);
-        bossEl.innerHTML = remaining + 'с';
+        const elapsed = (Date.now() - mainStats.obj.ist.bossStartTime) / 1000;
+        const remaining = Math.max(0, 30 - elapsed);
+        $('p-enemy .bosstime').innerHTML = Math.ceil(remaining) + 'с';
+        $('p-enemy .bossbar-fill').style.width = (remaining / 30 * 100) + '%';
+        bossBar.style.display = 'block';
       } else {
-        bossEl.innerHTML = '';
+        bossBar.style.display = 'none';
       }
     }
   }
