@@ -49,6 +49,7 @@ class StatsObj {
           noRewardFlag: false,
           radiansCalculating: false,
           bossTimer: null,
+          bossStartTime: null,
         }
       }
     }

@@ -24,6 +24,7 @@ class Enemy extends HTMLElement {
       if (isBoss) {
         clearTimeout(mainStats.obj.ist.bossTimer);
         mainStats.obj.ist.bossTimer = null;
+        mainStats.obj.ist.bossStartTime = null;
         console.group('[boss rewards]');
           mainStats.gold += mainStats.maxhp * mainStats.extrareward * 3;
           console.log('[boss maxhp reward] ' + mainStats.maxhp * mainStats.extrareward * 3);
@@ -67,6 +68,7 @@ class Enemy extends HTMLElement {
           mainStats.maxhp = baseMaxhp * 3;
           let bossId = mainStats.enemyid;
           console.log('[boss spawned, id=' + bossId + ']');
+          mainStats.obj.ist.bossStartTime = Date.now();
           mainStats.obj.ist.bossTimer = setTimeout(() => {
             mainStats.enemyid = bossId - 29;
             mainStats.maxhp = Math.floor(mainStats.enemyid**1.6*(6 + mainStats.prestige)) + (10+mainStats.prestige*20);
@@ -98,6 +100,7 @@ class Enemy extends HTMLElement {
   prestige() {
     clearTimeout(mainStats.obj.ist.bossTimer);
     mainStats.obj.ist.bossTimer = null;
+    mainStats.obj.ist.bossStartTime = null;
     mainStats.obj.ist.noRewardFlag = false;
     mainStats.enemyid = 0;
     mainStats.maxhp = Math.floor(mainStats.enemyid**1.6*(6 + mainStats.prestige)) + (10+mainStats.prestige*20);
