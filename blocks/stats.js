@@ -11,6 +11,7 @@ class Stats extends HTMLElement {
       $('p-stats .orb').innerHTML = S(mainStats.orb);
       $('p-stats .rpoints').innerHTML = S(mainStats.rpoints);
       $('p-stats .basedamage').innerHTML = S(mainStats.baseDamage);
+      $('p-stats .bossorb').innerHTML = S(mainStats.bossorb);
     }
   }
 }
