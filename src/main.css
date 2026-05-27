@@ -111,6 +111,12 @@ p-stats .rpoints::after {
 p-stats .basedamage::before {
   content: "Базовый урон: ";
 }
+p-stats .bossorb::before {
+  content: "Сферы босса: ";
+}
+p-stats .bossorb::after {
+  content: "б";
+}
 p-upgrades {
   display: block;
   margin-top: 10px;
