@@ -14,6 +14,7 @@ class StatsObj {
           gold:0,
           orb:0,
           rpoints:0,
+          bossorb:0,
         },
         lvls:{
           damage:0,
@@ -45,6 +46,9 @@ class StatsObj {
           bleeding:0,
           unfocusTime: Date.now(),
           sale:0,
+          noRewardFlag: false,
+          radiansCalculating: false,
+          bossTimer: null,
         }
       }
     }
@@ -329,6 +333,13 @@ class StatsObj {
   }
   get orb() {
     return this.obj.curs.orb;
+  }
+
+  set bossorb(v) {
+    return this.obj.curs.bossorb = v;
+  }
+  get bossorb() {
+    return this.obj.curs.bossorb;
   }
 
   /**

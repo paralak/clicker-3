@@ -44,6 +44,7 @@ document.addEventListener('visibilitychange',()=>{
 
 document.addEventListener('visibilitychange',()=>{
   if (!document.hidden) {
+    mainStats.obj.ist.radiansCalculating = true;
     let t =(Date.now()-mainStats.obj.ist.unfocusTime)/3000;
     for(let i=0;i<t;i++){
       if (mainStats.radians > 0.01)
@@ -52,5 +53,6 @@ document.addEventListener('visibilitychange',()=>{
           enemy: $('p-enemy'),
         });
     }
+    mainStats.obj.ist.radiansCalculating = false;
   }
 });
